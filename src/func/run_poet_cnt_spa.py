@@ -22,12 +22,13 @@ def poet_cnt(txt, topk=200):
     poet = pd.read_csv('data/poet.csv')
     doc = nlp(txt)
 
+    tmp_v = doc.vector
     rst = []
 
     for i in tqdm(range(len(spa_emb))):
-        # print(i[3].dtype)
-        # print(doc.vector.dtype)
-        ftmp = cosine_similarity([spa_emb[i][3]], [doc.vector])
+        ftmp = cosine_similarity([spa_emb[i][3]], [tmp_v])
+        if ftmp < 0.3:
+            continue
         rst.append([ftmp[0][0], poet['title'].iloc[i], poet['author'].iloc[i], poet['paragraphs'].iloc[i]])
 
 
@@ -48,4 +49,4 @@ def poet_cnt(txt, topk=200):
         print(i)
         rst.append(i[0])
         
-    return rst
+    return rst[:50]

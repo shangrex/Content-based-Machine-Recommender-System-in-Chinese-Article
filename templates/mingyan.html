@@ -51,7 +51,7 @@ body, html {
 		<span class="w3-tag">Shangrex</span>
 	</div>
 	<div class="w3-display-middle w3-center">
-		<span class="w3-text-white" style="font-size:90px">Poem<br>Article</span>
+		<span class="w3-text-white" style="font-size:90px">Mingyan<br>Article</span>
 	</div>
 	<div class="w3-display-bottomright w3-center w3-padding-large">
 		<span class="w3-text-white">hshangrex@gmail.com</span>
@@ -64,12 +64,12 @@ body, html {
 	<!-- About Container -->
 	<div class="w3-container" id="poet">
 		<div class="w3-content" style="max-width:700px">
-		<h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Search Poem</span></h5>
+		<h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">Recommend Mingyan</span></h5>
 		<div class="col">
-			<input id="input_search" type="text" class="form-control" placeholder="Keywords" name="text">
+			<input id="input_mingyan" type="text" class="form-control" placeholder="Keywords" name="text">
 		</div>
-		<button id="search_btn" type="submit" class="w3-button w3-black" value="search">Search</button>
-		<p id="content">Search Result</p>
+		<button id="mingyan_btn" type="submit" class="w3-button w3-black" value="search">Search</button>
+		<p id="content_mingyan">Search Mingyan</p>
 
 		<img src="../static/images/bg-post.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
 	</div>
@@ -79,31 +79,19 @@ body, html {
 <div class="w3-container" id="menu">
 <div class="w3-content" style="max-width:700px">
 
-	<h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Predict Author</span></h5>
+	<h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Recommend Novel's Name</span></h5>
 
 	<div class="col">
-		<input id="input_predict" type="text" class="form-control" placeholder="Keywords" name="text">
+		<input id="input_name" type="text" class="form-control" placeholder="Keywords" name="text">
 	</div>
-	<button id="predict_btn" type="submit" class="w3-button w3-black" value="search">Search</button>
-	<p id="content">Predict Result</p>
+	<button id="name_btn" type="submit" class="w3-button w3-black" value="search">Search</button>
+	<p id="content_name">Recommend the novel's name of miangyan</p>
 
 	<img src="../static/images/bg-index.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
 </div>
 </div>
 
-<!-- Contact/Area Container -->
-<div class="w3-container" id="where">
-<div class="w3-content" style="max-width:700px">
-	<h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">Recommend Poem</span></h5>
-	<div class="col">
-		<input id="input_recommend" type="text" class="form-control" placeholder="Keywords" name="text">
-	</div>
-	<button id="recommend_btn" type="submit" class="w3-button w3-black" value="search">Search</button>
-	<p id="content">Recommend Result</p>
-	<img src="../static/images/bg-about.jpg" style="width:100%;max-width:1000px" class="w3-margin-top">
 
-</div>
-</div>
 
 <!-- End page content -->
 </div>
@@ -117,16 +105,14 @@ body, html {
 
 <script>
 
-var search_btn = document.getElementById('search_btn');
+//recommend mingyan
+var mingyan_btn = document.getElementById('mingyan_btn');
 
-search_btn.addEventListener("click", function(event) {
-	// 在 “clicked div”顯示點擊次數
-	// event.target.innerHTML = "click count: " + event.detail;
-	
-	var value = document.getElementById('input_search').value;
+mingyan_btn.addEventListener("click", function(event) {
+	var value = document.getElementById('input_mingyan').value;
 	console.log(value);
 	var req = new XMLHttpRequest();
-	req.open('POST', '/poem/');
+	req.open('POST', '/mingyan/recommend/');
 	var account = {
 		keywords: value
 	}
@@ -135,27 +121,33 @@ search_btn.addEventListener("click", function(event) {
 	req.send(data);	
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
-		console.log(data);
-		var value = document.getElementById('content');
+		var value = document.getElementById('content_mingyan');
 		value.innerHTML = data['rst'];
 	}
 }, false); 
 
 
+//recommend Name of Mingyan
+var name_btn = document.getElementById('name_btn');
 
-function process_data(){
-	var value = $('#content');
-	$.ajax({
-	type: 'POST',
-	url: "{{ url_for('poem_search') }}",
-	data: JSON.stringify(value),
-	contentType: 'application/json',
-	success: function(data){
-		console.log(data);
-		value.innerHTML = "HELLOWORLD";
+name_btn.addEventListener("click", function(event) {
+	var value = document.getElementById('input_name').value;
+	console.log(value);
+	var req = new XMLHttpRequest();
+	req.open('POST', '/mingyan/name/');
+	var account = {
+		keywords: value
 	}
-});
-}
+	var data = JSON.stringify(account);
+
+	req.send(data);	
+	req.onload = function(){
+		data = JSON.parse(req.responseText);
+		var value = document.getElementById('content_name');
+		value.innerHTML = data['rst'];
+	}
+}, false); 
+
 
 
 // Tabbed Menu
