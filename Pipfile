@@ -1,0 +1,50 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pandas = "*"
+xgboost = "*"
+sklearn = "*"
+tqdm = "*"
+nltk = "*"
+beautifulsoup4 = "*"
+jupyter = "*"
+jieba = "*"
+bs4 = "*"
+matplotlib = "*"
+torch = "*"
+transformers = "*"
+pysnooper = "*"
+tensorboard = "*"
+plotly = "*"
+spacy = "*"
+sentencepiece = "*"
+flask = "*"
+tensorflow = "==2.4.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+poet_atr_test = "python -m src.script.run_poet_atr_test_all.py --model_path=data/pretrain/5 --limit_number=252 --topk=1"
+poet_atr_train = "python -m src.script.run_poet_atr_train.py --model_name=test --limit_number=252"
+poet_atr_show = "python -m src.script.run_poet_atr_test_sin --topk=3 --limit_number=252 --model_path=data/pretrain/5"
+poet_atr = "python -m src.script.run_poet_atr  --model_name=data/pretrain/5/ --limit_number=252 --txt=花間一壺酒，獨酌無相親。舉杯邀明月，對影成三人。月既不解飲，影徒隨我身。暫伴月將影，行樂須及春。我歌月徘徊，我舞影零亂。醒時同交歡，醉後各分散。永結無情遊，相期邈雲漢。"
+tensorboard = "tensorboard --logdir data/exp/5.pth"
+poet_cnt_bert = "python -m src.script.run_poet_cnt_bert --txt=國王"
+poet_cnt_spa = "python -m src.script.run_poet_cnt_spa --txt=求功名"
+poet_cnt_spa_train = "python -m src.script.run_poet_cnt_spa_train"
+poet_cnt_bert_train = "python -m src.script.run_poet_cnt_bert_train"
+poet_topic_train = "python -m src.script.run_poet_top_train --num_com=1000 --exp_name=1000_10 --min_df=10  --topk=20"
+poet_top = "python -m src.script.run_poet_top --find=花間一壺酒，獨酌無相親。舉杯邀明月，對影成三人。月既不解飲，影徒隨我身。暫伴月將影，行樂須及春。我歌月徘徊，我舞影零亂。醒時同交歡，醉後各分散。永結無情遊，相期邈雲漢。"
+poet_search = "python -m src.script.run_poet_search --find=理義悅心陳普"
+pic = "python -m src.script.run_pic --find=\"國 酒 李白\""
+ming = "python -m src.script.run_ming_cnt --txt=女兒"
+ming_train = "python -m src.script.run_ming_cnt_train"
+ming_name = "python -m src.script.run_ming_name"
+nov = "python -m src.script.run_novel_cnt --txt=武俠"
+nov_train = "python -m src.script.run_novel_cnt_train"
