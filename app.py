@@ -42,6 +42,7 @@ def poem_search():
     print("searching...")
     print(request.get_json('keywords')['keywords'])
     rst = poet_search(request.get_json('keywords')['keywords'])
+    st = ['\"', '[', ']', '\'']
     rst_cnt = rst[0]
     rst_atr = rst[1]
     rst_tit = rst[2]
@@ -50,7 +51,8 @@ def poem_search():
         shtml += "<p>"
         shtml += "<strong>"+str(i[1])+"</strong>" + '<br>' +str(i[2]) + '-' + str(i[3])
         if type(i[4]) != type(float) and str(i[4]) != "nan":
-            shtml += '<br>' +'tags'+ str()
+            x = "".join([j for j in i[4] if j not in st])
+            shtml += '<br>' +'tags: '+ str(x)
         shtml += "</p>"
     
     shtml += "<p><span class=\"w3-tag\">author match</span>"
@@ -58,7 +60,8 @@ def poem_search():
         shtml += "<p>"
         shtml += "<strong>"+str(i[0])+"</strong>" + '<br>' +str(i[1]) + '-' + str(i[2])
         if type(i[3]) != type(float) and str(i[3]) != "nan":
-            shtml += '<br>' +'tags'+ str()
+            x = "".join([j for j in i[3] if j not in st])
+            shtml += '<br>' +'tags: '+ str(x)
         shtml += "</p>"
 
     shtml += "<p><span class=\"w3-tag\">title match</span>"
@@ -66,7 +69,8 @@ def poem_search():
         shtml += "<p>"
         shtml += "<strong>"+str(i[0])+"</strong>" + '<br>' +str(i[1]) + '-' + str(i[2])
         if type(i[3]) != type(float) and str(i[3]) != "nan":
-            shtml += '<br>' +'tags'+ str()
+            x = "".join([j for j in i[3] if j not in st])
+            shtml += '<br>' +'tags: '+ str(x)
         shtml += "</p>"
 
     return jsonify({"success": 200, "rst": shtml})
@@ -79,6 +83,7 @@ def poem_predict():
     shtml = ""
     st = ['\"', '[', ']', '\'']
     for i in rst:
+        i = "".join([j for j in i if j not in st])
         shtml += "<p>"
         shtml += "<strong>"+str(i)+"</strong>"
         shtml += "</p>"
