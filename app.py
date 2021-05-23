@@ -6,6 +6,7 @@ from src.func.run_ming_cnt import ming_recommend
 from src.func.run_ming_name import ming_name
 from src.func.run_novel_name import novel_name
 from src.func.run_novel_atr import novel_author
+from src.func.run_ming_cls import ming_cls
 import subprocess
 import sys
 
@@ -13,13 +14,12 @@ app=Flask(__name__)
 
 @app.route('/')
 def index():
-    print(request)
-    return render_template("index.html")
+    print("classification...")
+    rst = ming_cls()
+    return render_template("index.html", rst1=rst[0], rst2=rst[1])
 
 @app.route('/', methods=['POST'])
 def search():
-    print("searching...")
-    print(request.form)
     return render_template("index.html")
 
 @app.route('/poem')

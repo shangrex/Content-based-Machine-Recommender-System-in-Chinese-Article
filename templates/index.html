@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Content-based-Machine-Recommender-System-in-Chinese-Article</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -65,7 +65,8 @@ body, html {
 <div class="w3-container" id="poet">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-64"><span class="w3-tag w3-wide">POEM</span></h5>    
-  </div>
+	<img src="/static/images/senset_mountain.jpeg" style="width:100%;max-width:1000px;margin-top:32px;">  
+</div>
 </div>
 
 <!-- Menu Container -->
@@ -84,39 +85,22 @@ body, html {
     </div>
 
     <div id="Eat" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Bread Basket</h5>
-      <p class="w3-text-grey">Assortment of fresh baked fruit breads and muffins 5.50</p><br>
-    
-      <h5>Honey Almond Granola with Fruits</h5>
-      <p class="w3-text-grey">Natural cereal of honey toasted oats, raisins, almonds and dates 7.00</p><br>
-    
-      <h5>Belgian Waffle</h5>
-      <p class="w3-text-grey">Vanilla flavored batter with malted flour 7.50</p><br>
-    
-      <h5>Scrambled eggs</h5>
-      <p class="w3-text-grey">Scrambled eggs, roasted red pepper and garlic, with green onions 7.50</p><br>
-    
-      <h5>Blueberry Pancakes</h5>
-      <p class="w3-text-grey">With syrup, butter and lots of berries 8.50</p>
+	{% for i in rst1 -%}
+		<h5>{{ i[0] }}</h5>
+		<p class="w3-text-grey">{{ i[1] }}</p>
+		<p class="w3-text-grey">{{ i[2] }}</p><br>
+	{%- endfor %}
+      
     </div>
 
     <div id="Drinks" class="w3-container menu w3-padding-48 w3-card">
-      <h5>Coffee</h5>
-      <p class="w3-text-grey">Regular coffee 2.50</p><br>
-    
-      <h5>Chocolato</h5>
-      <p class="w3-text-grey">Chocolate espresso with milk 4.50</p><br>
-    
-      <h5>Corretto</h5>
-      <p class="w3-text-grey">Whiskey and coffee 5.00</p><br>
-    
-      <h5>Iced tea</h5>
-      <p class="w3-text-grey">Hot tea, except not hot 3.00</p><br>
-    
-      <h5>Soda</h5>
-      <p class="w3-text-grey">Coke, Sprite, Fanta, etc. 2.50</p>
+	{% for i in rst2 -%}
+		<h5>{{ i[0] }}</h5>
+		<p class="w3-text-grey">{{ i[1] }}</p>
+		<p class="w3-text-grey">{{ i[2] }}</p><br>
+	{%- endfor %}
     </div>  
-    <img src="/w3images/coffeehouse2.jpg" style="width:100%;max-width:1000px;margin-top:32px;">
+    <img src="/static/images/sunset_lake2.jpeg" style="width:100%;max-width:1000px;margin-top:32px;">
   </div>
 </div>
 
@@ -124,7 +108,8 @@ body, html {
 <div class="w3-container" id="where" style="padding-bottom:32px;">
   <div class="w3-content" style="max-width:700px">
     <h5 class="w3-center w3-padding-48"><span class="w3-tag w3-wide">NOVEL</span></h5>
-  </div>
+	<img src="/static/images/sunset_lake.jpeg" style="width:100%;max-width:1000px;margin-top:32px;">  
+</div>
 </div>
 
 <!-- End page content -->
