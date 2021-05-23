@@ -10,38 +10,38 @@
 * 建立自己的Profile，來推薦不同類型的文章。
 * 與詩詞對話
 
-## 推薦方法
-* First:
-	* input: word
-	* outputs: author(tag), article(tag)
-	* ways: BERT(2 models), LDA
-* Second Search:
-	* input: words or author
-	* outputs: the article and similar words
-	* ways: same words
-* Third:
-	* input: Selected button(tag)
-	* outputs: author(tag), article(tag)
-	* ways: Selected LDA topic
-* Forth:
-	* input: Selected picture, plus OCR 
-	* outputs: article
-	* ways: OCR transform to text
 
-## Other function
-* 與文章對話(novel): 
-	* input: words
-	* outputs: some words
-	* ways: language model
-* 探討古人:
-	* input: author
-	* outputs: search result
-	* ways: text to saved the text
-* Quick Look of article
-	* input: title
-	* outputs: words cloud
-	* ways: wordclouds
-* Generate poem(poem):
-	* input: situation
-	* outputs: poem
-	* ways: language model
+## 功能介紹
+### home page
+![](https://i.imgur.com/O7cIQW5.jpg)
+介紹POEM資料集
+![](https://i.imgur.com/CXxw657.png)
+介紹MINGYAN資料集
+使用KMEANS把資聊集分成6個cluster，並隨機抽出兩個展示
+![](https://i.imgur.com/lzdCAs8.png)
+![](https://i.imgur.com/UKzQKL0.png)
+介紹NOVEL資料集
+![](https://i.imgur.com/gk84dJ2.png)
+
+### POEM
+搜索詩詞，存作者和題目和內容三個方向去搜索，利用LDA去尋找主題下的關鍵字，顯示在tags上
+![](https://i.imgur.com/wvPjju4.png)
+![](https://i.imgur.com/EqX7bHr.png)
+輸入詩詞，利用BERT做分類任務，預測和哪個左者風格最相近
+![](https://i.imgur.com/5OkackP.png)
+輸入詩詞，利用word vector計算，選出最相近的幾首詩詞
+![](https://i.imgur.com/bSuaAU1.png)
+![](https://i.imgur.com/aXLaSj4.png)
+
+### MINGYAN
+輸入句子，利用word vector計算，選出最相近的幾句名言
+![](https://i.imgur.com/FOv72Hk.png)
+輸入句子，利用word vector計算，選出最相近的幾句名研的書名
+![](https://i.imgur.com/Sjn9vfZ.png)
+
+### NOVEL
+輸入句子，利用word vector計算，選出小說書名
+![](https://i.imgur.com/D0YeIJj.png)
+輸入句子，利用word vector計算，利用小說內容選出小說作者
+![](https://i.imgur.com/qSlCDxb.png)
+
