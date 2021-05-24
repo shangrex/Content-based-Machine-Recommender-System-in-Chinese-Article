@@ -161,4 +161,4 @@ def novel_recommend_author():
     return jsonify({"success": 200, "rst": shtml})
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000, host='0.0.0.0')
