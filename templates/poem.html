@@ -130,8 +130,11 @@ search_btn.addEventListener("click", function(event) {
 		keywords: value
 	}
 	var data = JSON.stringify(account);
-
 	req.send(data);	
+	//waiting for response
+	var ltmp = document.getElementById('content_search');
+	ltmp.innerHTML = "<p>Loading...</p>";
+
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
 		var value = document.getElementById('content_search');
@@ -151,8 +154,11 @@ predict_btn.addEventListener("click", function(event) {
 		keywords: value
 	}
 	var data = JSON.stringify(account);
-
 	req.send(data);	
+	//waiting for response
+	var ltmp = document.getElementById('content_predict');
+	ltmp.innerHTML = "<p>Loading...</p>";
+
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
 		var value = document.getElementById('content_predict');
@@ -173,8 +179,11 @@ recommend_btn.addEventListener("click", function(event) {
 		keywords: value
 	}
 	var data = JSON.stringify(account);
-
 	req.send(data);	
+	//waiting for response
+	var ltmp = document.getElementById('content_recommend');
+	ltmp.innerHTML = "<p>Loading...</p>";
+
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
 		var value = document.getElementById('content_recommend');
@@ -183,19 +192,6 @@ recommend_btn.addEventListener("click", function(event) {
 }, false); 
 
 
-function process_data(){
-	var value = $('#content');
-	$.ajax({
-	type: 'POST',
-	url: "{{ url_for('poem_search') }}",
-	data: JSON.stringify(value),
-	contentType: 'application/json',
-	success: function(data){
-		console.log(data);
-		value.innerHTML = "HELLOWORLD";
-	}
-});
-}
 
 
 // Tabbed Menu

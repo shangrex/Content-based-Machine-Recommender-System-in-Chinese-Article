@@ -117,8 +117,10 @@ mingyan_btn.addEventListener("click", function(event) {
 		keywords: value
 	}
 	var data = JSON.stringify(account);
-
 	req.send(data);	
+	//waiting for response
+	var ltmp = document.getElementById('content_mingyan');
+	ltmp.innerHTML = "<p>Loading...</p>";
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
 		var value = document.getElementById('content_mingyan');
@@ -139,8 +141,12 @@ name_btn.addEventListener("click", function(event) {
 		keywords: value
 	}
 	var data = JSON.stringify(account);
-
 	req.send(data);	
+
+	//waiting for response
+	var ltmp = document.getElementById('content_name');
+	ltmp.innerHTML = "<p>Loading...</p>";
+
 	req.onload = function(){
 		data = JSON.parse(req.responseText);
 		var value = document.getElementById('content_name');
