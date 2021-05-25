@@ -20,7 +20,7 @@ def poet_atr(txt = "白日依山"):
     model_name = "data/pretrain/5/"
     limit_number = 252
     
-    topk = 10
+    topk = 15
 
     print("input txt: ", txt)
 
